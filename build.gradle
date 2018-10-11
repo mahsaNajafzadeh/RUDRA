@@ -1,0 +1,47 @@
+/*******************************************************************************
+ * ===========================================================
+ * This file is part of the CISE tool software.
+ *
+ * The CISE tool software contains proprietary and confidential information of Inria.
+ * All rights reserved. Reproduction, adaptation or distribution, in whole or in part, is
+ * forbidden except by express written permission of Inria.
+ * Version V1.5.1., July 2017
+ * Authors: Mahsa Najafzadeh, Michał Jabczyński, Marc Shapiro
+ * Copyright (C) 2017, Inria
+ * ===========================================================
+ ******************************************************************************/
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    examples
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+
+    compile 'org.slf4j:slf4j-log4j12:1.7.5'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'com.google.guava:guava:18.0'
+    compile 'org.javatuples:javatuples:1.2'
+    compile 'org.antlr:antlr4:4.5.1'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+test {
+    systemProperty "java.library.path", file("./lib")
+}
+
+tasks.withType(JavaExec) {
+    systemProperty "java.library.path", file("./lib")
+}
+
+task(runFoo, dependsOn: 'classes', type: JavaExec) {
+    main = 'analyzer.SequentialCheck'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
