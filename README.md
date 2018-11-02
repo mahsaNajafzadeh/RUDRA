@@ -8,4 +8,8 @@ Requirements:
  1) Z3 SAT solver library
  2) Antrl4 Runtime
  
+ The tool takes a ruby data model as input and checks whether the concurrenct exceution of every two actions mainatins the correctness properties implied by the data model, if so it returns true, otherwise it returns a counter-example. 
+ 
+ 
+ 
 
