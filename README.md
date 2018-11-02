@@ -5,7 +5,7 @@ A successful analysis proves that a given program will maintain its integrity in
 
 
 Requirements: 
- 1) Z3 SAT solver librray
+ 1) Z3 SAT solver library
  2) Antrl4 Runtime
  
 
